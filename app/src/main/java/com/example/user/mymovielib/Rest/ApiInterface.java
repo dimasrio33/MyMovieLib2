@@ -9,7 +9,11 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
     @GET("movie/now_playing")
-    Call<MvResponse> getNowPlaying(@Query("api_key") String apiKey);
+    Call<MvResponse> getNowPlaying(@Query("api_key") String api_key,
+                                   @Query("language") String language);
+
+
+
 
     @GET("movie/{id}")
     Call<MvResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String apiKey);

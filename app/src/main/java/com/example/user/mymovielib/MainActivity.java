@@ -1,6 +1,14 @@
 package com.example.user.mymovielib;
 
+import android.app.Notification;
 import android.content.Intent;
+import android.app.PendingIntent;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,12 +34,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.user.mymovielib.NotificationUtils.ANDROID_CHANNEL_ID;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // TODO - insert your themoviedb.org API KEY here
     private final static String API_KEY = "ada71d653c969073f2cd609d9eeb1e5d";
+    private String language = "en";
+
+    public static final int NOTIF_ID = 1;
+    PendingIntent pendingIntent;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -45,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId()==R.id.setting){
             startActivity(new Intent(this, SettingActivity.class));
+
+            Intent updste = new Intent(Intent.ACTION_VIEW, Uri.parse("http:/www.themoviedb.org/"));
+            pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, updste, 0);
+
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                showNotifOreo();
+            else showNotifDefault();
         }
 
         if (item.getItemId()==R.id.home){
@@ -54,6 +76,31 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId()==R.id.upcoming){
             startActivity(new Intent(this, UpcomingActivity.class));
+
+            Intent updste = new Intent(Intent.ACTION_VIEW, Uri.parse("http:/www.themoviedb.org/"));
+            pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, updste, 0);
+
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                showNotifOreo();
+            else showNotifDefault();
+        }
+
+        if (item.getItemId()==R.id.eng){
+            language = "en";
+        }
+
+        if (item.getItemId()==R.id.ind){
+            language = "id";
+        }
+
+
+        if (item.getItemId()==R.id.ck){
+            Intent updste = new Intent(Intent.ACTION_VIEW, Uri.parse("http:/www.themoviedb.org/"));
+            pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, updste, 0);
+
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                showNotifOreo();
+            else showNotifDefault();
         }
         return false;
     }
@@ -75,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Call<MvResponse> call = apiService.getNowPlaying(API_KEY);
+        Call<MvResponse> call = apiService.getNowPlaying(API_KEY, language);
         call.enqueue(new Callback<MvResponse>() {
             @Override
             public void onResponse(Call<MvResponse>call, Response<MvResponse> response) {
@@ -136,4 +183,40 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
+    //NOTIFICATION UPDATE
+    public void showNotifDefault(){
+        NotificationCompat.Builder notifBuilder = new NotificationCompat.Builder(MainActivity.this)
+                .setSmallIcon(R.drawable.ic_ac_unit_black_24dp)
+                .setContentIntent(pendingIntent)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources()
+                        , R.drawable.ic_ac_unit_black_24dp))
+                .setContentTitle(getResources().getString(R.string.content_title))
+                .setContentText(getResources().getString(R.string.content_text))
+                .setSubText(getResources().getString(R.string.subtext))
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notifManager = NotificationManagerCompat.from(getApplicationContext());
+        notifManager.notify(NOTIF_ID, notifBuilder.build());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void showNotifOreo(){
+        Notification.Builder notifBuilder = new Notification.Builder(MainActivity.this, ANDROID_CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_ac_unit_black_24dp)
+                .setContentIntent(pendingIntent)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources()
+                        , R.drawable.ic_ac_unit_black_24dp))
+                .setContentTitle(getResources().getString(R.string.content_title))
+                .setContentText(getResources().getString(R.string.content_text))
+                .setSubText(getResources().getString(R.string.subtext))
+                .setAutoCancel(true);
+
+        NotificationUtils utils = new NotificationUtils(MainActivity.this);
+        utils.getManager().notify(NOTIF_ID, notifBuilder.build());
+    }
+
+
 }

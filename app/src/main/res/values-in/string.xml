@@ -29,6 +29,12 @@
 
 
 
+    <string name="content_title">Data Diperbarui</string>
+    <string name="content_text">Silakan Klik</string>
+    <string name="subtext">Update Tersedia </string>
+    <string name="send_notif">Send Notif</string>
+
+    <string name="check">Cek!</string>
 
 
 

@@ -29,4 +29,30 @@
         android:title="@string/setting_title"
         android:visible="true"
         />
+
+    <item
+        android:id="@+id/eng"
+        android:icon="@drawable/ic_settings_white_48dp"
+        android:enabled="true"
+        android:title="English"
+        android:visible="true"
+        />
+
+
+
+    <item
+        android:id="@+id/ind"
+        android:icon="@drawable/ic_settings_white_48dp"
+        android:enabled="true"
+        android:title="Indonesia"
+        android:visible="true"
+        />
+
+
+    <item
+        android:id="@+id/ck"
+        android:enabled="true"
+        android:title="@string/check"
+        android:visible="true"
+        />
 </menu>

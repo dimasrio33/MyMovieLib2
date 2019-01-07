@@ -21,4 +21,11 @@
     <string name="overview_sinopsis_film">Overview / Sinopsis film</string>
 
 
+    <string name="content_title">Aplication Updates</string>
+    <string name="content_text">Please Update your app!</string>
+    <string name="subtext">Application updates are available </string>
+    <string name="send_notif">Send Notif</string>
+    <string name="check">Check</string>
+
+
 </resources>
