@@ -55,4 +55,11 @@
         android:title="@string/check"
         android:visible="true"
         />
+
+    <item
+        android:id="@+id/acc"
+        android:enabled="true"
+        android:title="@string/acc"
+        android:visible="true"
+        />
 </menu>

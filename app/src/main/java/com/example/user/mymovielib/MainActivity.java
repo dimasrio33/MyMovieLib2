@@ -102,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
                 showNotifOreo();
             else showNotifDefault();
         }
+
+        if (item.getItemId()==R.id.acc){
+            startActivity(new Intent(this, AccountActivity.class));
+        }
         return false;
     }
 
