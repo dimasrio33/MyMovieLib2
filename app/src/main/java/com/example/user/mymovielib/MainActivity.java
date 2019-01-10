@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // TODO - insert your themoviedb.org API KEY here
-    private final static String API_KEY = "ada71d653c969073f2cd609d9eeb1e5d";
+    private final static String API_KEY = "diganti ya";
     private String language = "en";
 
     public static final int NOTIF_ID = 1;
