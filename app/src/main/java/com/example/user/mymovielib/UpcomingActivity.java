@@ -32,7 +32,7 @@ public class UpcomingActivity extends AppCompatActivity {
     private static final String TAG = UpcomingActivity.class.getSimpleName();
 
     // TODO - insert your themoviedb.org API KEY here
-    private final static String API_KEY = "ada71d653c969073f2cd609d9eeb1e5d";
+    private final static String API_KEY = "diganti ya";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
