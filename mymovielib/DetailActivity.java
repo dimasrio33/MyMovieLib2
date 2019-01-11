@@ -11,7 +11,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public TextView txtTitle, txtsinopsis, txtwaktu, txtnilai;
     public ImageView bg;
-
+////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

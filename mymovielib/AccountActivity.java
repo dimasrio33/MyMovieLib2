@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class AccountActivity extends AppCompatActivity {
-
+////////
     EditText editUsername,editPassword ,editTextId;
     Button btnAddData;
     Button btnviewAll;

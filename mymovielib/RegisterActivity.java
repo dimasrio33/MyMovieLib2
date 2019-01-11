@@ -17,7 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     //    EditText mName;
     Button mBtnRegister;
     TextView mLogin;
-
+////////
     DatabaseHelper db;
 ///////////////////////////////////
     @Override

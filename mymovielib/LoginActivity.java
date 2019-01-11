@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-
+////////
     EditText mUsername;
     EditText mPassword;
     Button mBtnLogin;

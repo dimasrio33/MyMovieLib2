@@ -21,7 +21,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private static final String Locale_KeyValue = "Saved Locale";
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
-
+////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
